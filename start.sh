@@ -7,4 +7,4 @@ node sync.js --download
 node sync.js --watch &
 
 # Start WAHA
-exec npm start
+exec node dist/main.js
