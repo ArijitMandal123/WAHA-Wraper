@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: waha-persistent
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    ports:
+      - 3000
+      - 3001
+    envVars:
+      - key: WHATSAPP_SESSIONS_MONGO_URL
+        sync: false
+      - key: WHATSAPP_DEFAULT_ENGINE
+        value: GOWS
+      - key: PORT
+        value: 3000
+      - key: WHATSAPP_API_KEY_EXCLUDE_PATH
+        value: ping,health
+      - key: NODE_OPTIONS
+        value: --max-old-space-size=400
