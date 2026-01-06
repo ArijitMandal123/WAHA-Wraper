@@ -114,13 +114,63 @@ node sync.js --watch
 
 You can also access JSON data at: `https://your-render-app.onrender.com:3001/status`
 
-### Features
+## Troubleshooting
 
-- **Auto-refresh**: Updates every 5 seconds
-- **Manual refresh**: Click "Refresh Now" button
-- **Connection status**: Shows if MongoDB is reachable
-- **File listings**: Displays both stored and local session files
-- **Error handling**: Shows connection errors clearly
+### MongoDB Authentication Failed
+
+**Error:** `bad auth : authentication failed`
+
+**Solutions:**
+1. **Check your connection string format:**
+   - Should be: `mongodb+srv://username:password@cluster.mongodb.net/database`
+   - Replace `username`, `password`, `cluster`, and `database` with your actual values
+   - Make sure there are no extra spaces or characters
+
+2. **Verify credentials:**
+   - Go to MongoDB Atlas → Database Access
+   - Ensure your user has read/write permissions
+   - Check if the password is correct (reset if needed)
+
+3. **Database name:**
+   - The database name in the URL should match your actual database
+   - Default is often `test` or `admin` - create a specific database if needed
+
+4. **Network access:**
+   - In Atlas → Network Access, ensure your IP is whitelisted or set to 0.0.0.0/0 for testing
+
+5. **Test locally:**
+   ```bash
+   export WHATSAPP_SESSIONS_MONGO_URL="your-connection-string"
+   node sync.js --test-connection
+   ```
+
+### WAHA Startup Issues
+
+**Error:** `No such file or directory` for entrypoint.sh
+
+**Solution:** The startup script has been updated to use `npm start` instead of the entrypoint.sh file. If you still get errors, check the Render logs for the correct startup command.
+
+### Memory Issues
+
+**Error:** Out of memory or high memory usage
+
+**Solution:** The `NODE_OPTIONS=--max-old-space-size=400` limits Node.js to 400MB. If you need more memory, consider upgrading to Render's paid plans.
+
+### Session Sync Not Working
+
+**Check:**
+1. MongoDB connection is successful (no auth errors)
+2. Status page shows files being uploaded/downloaded
+3. WhatsApp sessions are actually created and used
+
+### Status Page Not Loading
+
+**URL:** `https://your-app.onrender.com:3001/`
+
+**If not working:**
+1. Check Render logs for status server startup: `[SYNC] Status server running on port 3001`
+2. Ensure port 3001 is configured in render.yaml
+3. Try accessing `https://your-app.onrender.com:3001/status` for JSON data
 
 ## Monitoring Data Sharing
 

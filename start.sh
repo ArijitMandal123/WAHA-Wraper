@@ -7,4 +7,4 @@ node sync.js --download
 node sync.js --watch &
 
 # Start WAHA
-exec /app/entrypoint.sh
+exec npm start
