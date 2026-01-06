@@ -17,8 +17,6 @@ services:
         value: ping,health
       - key: NODE_OPTIONS
         value: --max-old-space-size=400
-      - key: WAHA_API_KEY
-        generateValue: true
       - key: WAHA_DASHBOARD_USERNAME
         value: admin
       - key: WAHA_DASHBOARD_PASSWORD
