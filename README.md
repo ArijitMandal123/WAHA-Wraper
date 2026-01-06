@@ -121,21 +121,26 @@ You can also access JSON data at: `https://your-render-app.onrender.com:3001/sta
 **Error:** `bad auth : authentication failed`
 
 **Solutions:**
+
 1. **Check your connection string format:**
+
    - Should be: `mongodb+srv://username:password@cluster.mongodb.net/database`
    - Replace `username`, `password`, `cluster`, and `database` with your actual values
    - Make sure there are no extra spaces or characters
 
 2. **Verify credentials:**
+
    - Go to MongoDB Atlas → Database Access
    - Ensure your user has read/write permissions
    - Check if the password is correct (reset if needed)
 
 3. **Database name:**
+
    - The database name in the URL should match your actual database
    - Default is often `test` or `admin` - create a specific database if needed
 
 4. **Network access:**
+
    - In Atlas → Network Access, ensure your IP is whitelisted or set to 0.0.0.0/0 for testing
 
 5. **Test locally:**
@@ -159,6 +164,7 @@ You can also access JSON data at: `https://your-render-app.onrender.com:3001/sta
 ### Session Sync Not Working
 
 **Check:**
+
 1. MongoDB connection is successful (no auth errors)
 2. Status page shows files being uploaded/downloaded
 3. WhatsApp sessions are actually created and used
@@ -168,6 +174,7 @@ You can also access JSON data at: `https://your-render-app.onrender.com:3001/sta
 **URL:** `https://your-app.onrender.com:3001/`
 
 **If not working:**
+
 1. Check Render logs for status server startup: `[SYNC] Status server running on port 3001`
 2. Ensure port 3001 is configured in render.yaml
 3. Try accessing `https://your-app.onrender.com:3001/status` for JSON data
