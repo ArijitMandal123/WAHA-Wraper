@@ -7,8 +7,12 @@ services:
       - 3000
       - 3001
     envVars:
-      - key: WHATSAPP_SESSIONS_MONGO_URL
+      # Database Configuration (Required)
+      - key: WHATSAPP_SESSIONS_POSTGRESQL_URL
         sync: false
+      - key: WAHA_MEDIA_POSTGRESQL_URL
+        sync: false
+      # WAHA Configuration
       - key: WHATSAPP_DEFAULT_ENGINE
         value: GOWS
       - key: PORT
@@ -17,7 +21,15 @@ services:
         value: ping,health
       - key: NODE_OPTIONS
         value: --max-old-space-size=400
+      - key: WAHA_MEDIA_STORAGE
+        value: postgresql
+      # Dashboard Configuration
       - key: WAHA_DASHBOARD_USERNAME
         value: admin
       - key: WAHA_DASHBOARD_PASSWORD
         generateValue: true
+      # Optional
+      - key: WHATSAPP_HOOK_URL
+        sync: false
+      - key: WAHA_API_KEY
+        sync: false

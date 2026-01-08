@@ -1,15 +1,20 @@
 {
   "name": "waha-sync",
-  "version": "1.0.0",
-  "description": "Sync script for WAHA sessions with MongoDB",
+  "version": "2.0.0",
+  "description": "Sync script for WAHA sessions with CockroachDB - Optimized for Hugging Face Spaces",
   "main": "sync.js",
   "scripts": {
-    "start": "node sync.js"
+    "start": "node sync.js --watch",
+    "test-connection": "node sync.js --test-connection",
+    "download": "node sync.js --download"
   },
   "dependencies": {
-    "mongodb": "^6.0.0",
+    "pg": "^8.11.3",
     "chokidar": "^3.5.3",
     "fs-extra": "^11.1.1",
     "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
